@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 
 .gitconfig
+library/library/local_settings.py
