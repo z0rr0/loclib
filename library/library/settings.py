@@ -122,6 +122,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+BOOK_ROOT = '/tmp/'
+
 if 'test' not in sys.argv:
     # overwrite custom settings
     try:
