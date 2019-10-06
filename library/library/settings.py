@@ -32,13 +32,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'book.apps.BookConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'book',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +123,8 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 BOOK_ROOT = '/tmp/'
+BOOKS_PER_PAGE = 10
+APP_TITLE = 'LocLib'
 
 if 'test' not in sys.argv:
     # overwrite custom settings

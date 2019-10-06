@@ -1,0 +1,20 @@
+{% extends 'book/base.html' %}
+{% block title %}{{request.settings_params.title}}{% endblock %}
+{% block content %}
+  {% if info %}
+    <p>
+      <em>{{ info }}</em>
+    </p>
+  {% endif %}
+  {% for book in books %}
+    <h3>
+      <a href="/">{{ book.title }}</a>
+    </h3>
+    <div class="post_list">
+      {{ book.body|safe|truncatewords_html:50 }}
+    </div>
+  {% endfor %}
+  {% if paginator.num_pages > 1 %}
+    {% include "book/pagination.html" with page=page_obj page_range=paginator.page_range %}
+  {% endif %}
+{% endblock %}

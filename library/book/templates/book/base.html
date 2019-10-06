@@ -1,0 +1,82 @@
+{% load static %}
+{% load i18n %}
+<!doctype html>
+<html lang="{{request.settings_params.lang}}" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="local library">
+    <meta name="author" content="me@axv.email">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700" rel="stylesheet" type="text/css"> -->
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static "book/css/main.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="sticky-footer.css" rel="stylesheet"> -->
+  </head>
+  <body class="d-flex flex-column h-100">
+    <!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12" id="blog_title">
+        <h1 class="mt-5"><a href="/" class="title">{{request.settings_params.title}}</a></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        {% block content %}{% endblock %}
+      </div>
+      <div class="col-3" id="info_panel">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <form action="/">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="search" placeholder="{% trans "Search" %}">
+                </div>
+                <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4 id="info_part">{% trans "Tags" %}</h4>
+              <div id="tag_names">
+                {% for tag in request.tags %}
+                  <a href="{% url 'tag_filter' tag.name %}" class="badge badge-primary">{{tag.name}} ({{ tag.count }})
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4 id="info_part">RSS feed</h4>
+              <div>
+                <a href="/">{% trans "Subscribe to RSS" %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer mt-auto py-3" id="footer">
+  <div class="container">
+    <span class="text-muted">
+      <a href="{{ request.settings_params.github }}" title="GitHub" class="footer_link">
+        <img src="{% static 'book/img/GitHub_Logo.png' %}" height="20px">
+      </a>
+{#      <a href="{% url "about" %}" class="footer_link">{% trans "About blog" %}</a>#}
+      <span class="footer_link"><small>{{request.settings_params.version}}</small></span>
+    </span>
+  </div>
+</footer>
+</body>
+</html>
