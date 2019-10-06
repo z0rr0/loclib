@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'book.middleware.BookMiddleware',
 ]
 
 ROOT_URLCONF = 'library.urls'
@@ -125,6 +126,7 @@ MEDIA_URL = '/media/'
 BOOK_ROOT = '/tmp/'
 BOOKS_PER_PAGE = 10
 APP_TITLE = 'LocLib'
+GITHUB_LINK = 'https://github.com/z0rr0/loclib'
 
 if 'test' not in sys.argv:
     # overwrite custom settings

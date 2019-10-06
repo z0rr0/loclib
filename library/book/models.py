@@ -78,8 +78,8 @@ class Book(CreatedUpdatedModel):
     publisher = models.ForeignKey(Publisher, null=True, blank=True, on_delete=models.SET_NULL)
     pubdate = models.DateField(_('pubdate'), null=True, blank=True)
     checksum = models.CharField(_('checksum'), max_length=64, blank=True, unique=True)
-    authors = models.ManyToManyField(Author, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    authors = models.ManyToManyField(Author, blank=True, related_name='books')
+    tags = models.ManyToManyField(Tag, blank=True, related_name='books')
 
     class Meta:
         ordering = ('title',)

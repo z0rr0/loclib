@@ -4,7 +4,7 @@ from django.db.models import Count
 from .models import Tag
 
 
-class BlogMiddleware:
+class BookMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
