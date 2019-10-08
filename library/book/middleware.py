@@ -9,9 +9,6 @@ class BookMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # user staff flag
-        request.is_staff_user = request.user.is_authenticated and request.user.is_staff
-
         # tags cloud
         request.tags = Tag.objects.values('name').annotate(count=Count('books__pk')).order_by('-count')
 
