@@ -5,12 +5,12 @@ from .models import Author, Publisher, Book, Tag, Comment
 
 
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ['name', 'homepage', 'created']
+    list_display = ['name', 'original_name', 'homepage', 'created']
     search_fields = ('name',)
 
 
 class PublisherAdmin(admin.ModelAdmin):
-    list_display = ['name', 'homepage', 'created']
+    list_display = ['name', 'original_name', 'homepage', 'created']
     search_fields = ('name',)
 
 
@@ -20,8 +20,9 @@ class TagAdmin(admin.ModelAdmin):
 
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ['title', 'created']
+    list_display = ['title', 'path', 'language', 'created']
     search_fields = ('title', 'path')
+    list_filter = ('authors', 'tags', 'pubdate')
 
 
 class CommentAdmin(admin.ModelAdmin):
